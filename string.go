@@ -7,7 +7,7 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/samber/lo/internal/rand"
+	"github.com/big-cabbage/lo/internal/rand"
 
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"

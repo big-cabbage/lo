@@ -1,13 +1,15 @@
 
 # lo - Iterate over slices, maps, channels...
 
-[![tag](https://img.shields.io/github/tag/samber/lo.svg)](https://github.com/samber/lo/releases)
+基于 [samber/lo](https://github.com/samber/lo) 的 Go 库，增加了一些实用的函数。
+
+[![tag](https://img.shields.io/github/tag/samber/lo.svg)](https://github.com/big-cabbage/lo/releases)
 ![Go Version](https://img.shields.io/badge/Go-%3E%3D%201.18-%23007d9c)
-[![GoDoc](https://godoc.org/github.com/samber/lo?status.svg)](https://pkg.go.dev/github.com/samber/lo)
-![Build Status](https://github.com/samber/lo/actions/workflows/test.yml/badge.svg)
-[![Go report](https://goreportcard.com/badge/github.com/samber/lo)](https://goreportcard.com/report/github.com/samber/lo)
+[![GoDoc](https://godoc.org/github.com/big-cabbage/lo?status.svg)](https://pkg.go.dev/github.com/big-cabbage/lo)
+![Build Status](https://github.com/big-cabbage/lo/actions/workflows/test.yml/badge.svg)
+[![Go report](https://goreportcard.com/badge/github.com/big-cabbage/lo)](https://goreportcard.com/report/github.com/big-cabbage/lo)
 [![Coverage](https://img.shields.io/codecov/c/github/samber/lo)](https://codecov.io/gh/samber/lo)
-[![Contributors](https://img.shields.io/github/contributors/samber/lo)](https://github.com/samber/lo/graphs/contributors)
+[![Contributors](https://img.shields.io/github/contributors/samber/lo)](https://github.com/big-cabbage/lo/graphs/contributors)
 [![License](https://img.shields.io/github/license/samber/lo)](./LICENSE)
 
 ✨ **`samber/lo` is a Lodash-style Go library based on Go 1.18+ Generics.**
@@ -30,7 +32,7 @@ I wanted a **short name**, similar to "Lodash", and no Go package uses this name
 ## 🚀 Install
 
 ```sh
-go get github.com/samber/lo@v1
+go get github.com/big-cabbage/lo@v1
 ```
 
 This library is v1 and follows SemVer strictly.
@@ -45,9 +47,9 @@ You can import `lo` using:
 
 ```go
 import (
-    "github.com/samber/lo"
-    lop "github.com/samber/lo/parallel"
-    lom "github.com/samber/lo/mutable"
+    "github.com/big-cabbage/lo"
+    lop "github.com/big-cabbage/lo/parallel"
+    lom "github.com/big-cabbage/lo/mutable"
 )
 ```
 
@@ -64,7 +66,7 @@ I cannot recommend it, but in case you are too lazy for repeating `lo.` everywhe
 
 ```go
 import (
-    . "github.com/samber/lo"
+    . "github.com/big-cabbage/lo"
 )
 ```
 
@@ -72,7 +74,7 @@ I take no responsibility on this junk. 😁 💩
 
 ## 🤠 Spec
 
-GoDoc: [https://godoc.org/github.com/samber/lo](https://godoc.org/github.com/samber/lo)
+GoDoc: [https://godoc.org/github.com/big-cabbage/lo](https://godoc.org/github.com/big-cabbage/lo)
 
 Supported helpers for slices:
 
@@ -347,7 +349,7 @@ even := lo.Filter([]int{1, 2, 3, 4}, func(x int, index int) bool {
 Mutable: like `lo.Filter()`, but the slice is updated in place.
 
 ```go
-import lom "github.com/samber/lo/mutable"
+import lom "github.com/big-cabbage/lo/mutable"
 
 list := []int{1, 2, 3, 4}
 newList := lom.Filter(list, func(x int) bool {
@@ -366,7 +368,7 @@ newList
 Manipulates a slice of one type and transforms it into a slice of another type:
 
 ```go
-import "github.com/samber/lo"
+import "github.com/big-cabbage/lo"
 
 lo.Map([]int64{1, 2, 3, 4}, func(x int64, index int) string {
     return strconv.FormatInt(x, 10)
@@ -379,7 +381,7 @@ lo.Map([]int64{1, 2, 3, 4}, func(x int64, index int) string {
 Parallel processing: like `lo.Map()`, but the mapper function is called in a goroutine. Results are returned in the same order.
 
 ```go
-import lop "github.com/samber/lo/parallel"
+import lop "github.com/big-cabbage/lo/parallel"
 
 lop.Map([]int64{1, 2, 3, 4}, func(x int64, _ int) string {
     return strconv.FormatInt(x, 10)
@@ -390,7 +392,7 @@ lop.Map([]int64{1, 2, 3, 4}, func(x int64, _ int) string {
 Mutable: like `lo.Map()`, but the slice is updated in place.
 
 ```go
-import lom "github.com/samber/lo/mutable"
+import lom "github.com/big-cabbage/lo/mutable"
 
 list := []int{1, 2, 3, 4}
 lom.Map(list, func(x int) int {
@@ -481,7 +483,7 @@ result := lo.ReduceRight([][]int{{0, 1}, {2, 3}, {4, 5}}, func(agg []int, item [
 Iterates over elements of a collection and invokes the function over each element.
 
 ```go
-import "github.com/samber/lo"
+import "github.com/big-cabbage/lo"
 
 lo.ForEach([]string{"hello", "world"}, func(x string, _ int) {
     println(x)
@@ -494,7 +496,7 @@ lo.ForEach([]string{"hello", "world"}, func(x string, _ int) {
 Parallel processing: like `lo.ForEach()`, but the callback is called as a goroutine.
 
 ```go
-import lop "github.com/samber/lo/parallel"
+import lop "github.com/big-cabbage/lo/parallel"
 
 lop.ForEach([]string{"hello", "world"}, func(x string, _ int) {
     println(x)
@@ -527,7 +529,7 @@ lo.ForEachWhile(list, func(x int64, _ int) bool {
 Times invokes the iteratee n times, returning an array of the results of each invocation. The iteratee is invoked with index as argument.
 
 ```go
-import "github.com/samber/lo"
+import "github.com/big-cabbage/lo"
 
 lo.Times(3, func(i int) string {
     return strconv.FormatInt(int64(i), 10)
@@ -540,7 +542,7 @@ lo.Times(3, func(i int) string {
 Parallel processing: like `lo.Times()`, but callback is called in goroutine.
 
 ```go
-import lop "github.com/samber/lo/parallel"
+import lop "github.com/big-cabbage/lo/parallel"
 
 lop.Times(3, func(i int) string {
     return strconv.FormatInt(int64(i), 10)
@@ -577,7 +579,7 @@ uniqValues := lo.UniqBy([]int{0, 1, 2, 3, 4, 5}, func(i int) int {
 Returns an object composed of keys generated from the results of running each element of collection through iteratee.
 
 ```go
-import lo "github.com/samber/lo"
+import lo "github.com/big-cabbage/lo"
 
 groups := lo.GroupBy([]int{0, 1, 2, 3, 4, 5}, func(i int) int {
     return i%3
@@ -590,7 +592,7 @@ groups := lo.GroupBy([]int{0, 1, 2, 3, 4, 5}, func(i int) int {
 Parallel processing: like `lo.GroupBy()`, but callback is called in goroutine.
 
 ```go
-import lop "github.com/samber/lo/parallel"
+import lop "github.com/big-cabbage/lo/parallel"
 
 lop.GroupBy([]int{0, 1, 2, 3, 4, 5}, func(i int) int {
     return i%3
@@ -603,7 +605,7 @@ lop.GroupBy([]int{0, 1, 2, 3, 4, 5}, func(i int) int {
 Returns an object composed of keys generated from the results of running each element of collection through iteratee.
 
 ```go
-import lo "github.com/samber/lo"
+import lo "github.com/big-cabbage/lo"
 
 groups := lo.GroupByMap([]int{0, 1, 2, 3, 4, 5}, func(i int) (int, int) {
     return i%3, i*2
@@ -636,7 +638,7 @@ lo.Chunk([]int{0}, 2)
 Returns an array of elements split into groups. The order of grouped values is determined by the order they occur in collection. The grouping is generated from the results of running each element of collection through iteratee.
 
 ```go
-import lo "github.com/samber/lo"
+import lo "github.com/big-cabbage/lo"
 
 partitions := lo.PartitionBy([]int{-2, -1, 0, 1, 2, 3, 4, 5}, func(x int) string {
     if x < 0 {
@@ -654,7 +656,7 @@ partitions := lo.PartitionBy([]int{-2, -1, 0, 1, 2, 3, 4, 5}, func(x int) string
 Parallel processing: like `lo.PartitionBy()`, but callback is called in goroutine. Results are returned in the same order.
 
 ```go
-import lop "github.com/samber/lo/parallel"
+import lop "github.com/big-cabbage/lo/parallel"
 
 partitions := lop.PartitionBy([]int{-2, -1, 0, 1, 2, 3, 4, 5}, func(x int) string {
     if x < 0 {
@@ -699,7 +701,7 @@ Returns an array of shuffled values. Uses the Fisher-Yates shuffle algorithm.
 ⚠️ This helper is **mutable**.
 
 ```go
-import lom "github.com/samber/lo/mutable"
+import lom "github.com/big-cabbage/lo/mutable"
 
 list := []int{0, 1, 2, 3, 4, 5}
 lom.Shuffle(list)
@@ -717,7 +719,7 @@ Reverses array so that the first element becomes the last, the second element be
 ⚠️ This helper is **mutable**.
 
 ```go
-import lom "github.com/samber/lo/mutable"
+import lom "github.com/big-cabbage/lo/mutable"
 
 list := []int{0, 1, 2, 3, 4, 5}
 lom.Reverse(list)
@@ -4115,7 +4117,7 @@ Here is a comparison between `lo.Map`, `lop.Map`, `go-funk` library and a simple
 $ go test -benchmem -bench ./...
 goos: linux
 goarch: amd64
-pkg: github.com/samber/lo
+pkg: github.com/big-cabbage/lo
 cpu: Intel(R) Core(TM) i5-7267U CPU @ 3.10GHz
 cpu: Intel(R) Core(TM) i7 CPU         920  @ 2.67GHz
 BenchmarkMap/lo.Map-8         	       8	 132728237 ns/op	39998945 B/op	 1000002 allocs/op
@@ -4123,7 +4125,7 @@ BenchmarkMap/lop.Map-8        	       2	 503947830 ns/op	119999956 B/op	 3000007
 BenchmarkMap/reflect-8        	       2	 826400560 ns/op	170326512 B/op	 4000042 allocs/op
 BenchmarkMap/for-8            	       9	 126252954 ns/op	39998674 B/op	 1000001 allocs/op
 PASS
-ok  	github.com/samber/lo	6.657s
+ok  	github.com/big-cabbage/lo	6.657s
 ```
 
 - `lo.Map` is way faster (x7) than `go-funk`, a reflection-based Map implementation.
@@ -4135,8 +4137,8 @@ ok  	github.com/samber/lo	6.657s
 ## 🤝 Contributing
 
 - Ping me on Twitter [@samuelberthe](https://twitter.com/samuelberthe) (DMs, mentions, whatever :))
-- Fork the [project](https://github.com/samber/lo)
-- Fix [open issues](https://github.com/samber/lo/issues) or request new features
+- Fork the [project](https://github.com/big-cabbage/lo)
+- Fix [open issues](https://github.com/big-cabbage/lo/issues) or request new features
 
 Don't hesitate ;)
 

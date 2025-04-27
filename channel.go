@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/samber/lo/internal/rand"
+	"github.com/big-cabbage/lo/internal/rand"
 )
 
 type DispatchingStrategy[T any] func(msg T, index uint64, channels []<-chan T) int

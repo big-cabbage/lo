@@ -4,6 +4,6 @@ services:
   dev:
     image: golang:1.18-bullseye
     volumes:
-      - ./:/go/src/github.com/samber/lo
-    working_dir: /go/src/github.com/samber/lo
+      - ./:/go/src/github.com/big-cabbage/lo
+    working_dir: /go/src/github.com/big-cabbage/lo
     command: make watch-test

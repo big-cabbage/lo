@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/samber/lo/internal/constraints"
-	"github.com/samber/lo/internal/rand"
+	"github.com/big-cabbage/lo/internal/constraints"
+	"github.com/big-cabbage/lo/internal/rand"
 )
 
 // IndexOf returns the index at which the first occurrence of a value is found in an array or return -1

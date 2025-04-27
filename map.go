@@ -342,3 +342,23 @@ func FilterMapToSlice[K comparable, V any, R any](in map[K]V, iteratee func(key 
 
 	return result
 }
+
+// MapAny returns true if at least one element of the map satisfies the predicate.
+func MapAny[K comparable, V any](in map[K]V, predicate func(key K, value V) bool) bool {
+	for k := range in {
+		if predicate(k, in[k]) {
+			return true
+		}
+	}
+	return false
+}
+
+// MapAll returns true if all elements of the map satisfy the predicate.
+func MapAll[K comparable, V any](in map[K]V, predicate func(key K, value V) bool) bool {
+	for k := range in {
+		if !predicate(k, in[k]) {
+			return false
+		}
+	}
+	return true
+}

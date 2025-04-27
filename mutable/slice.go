@@ -1,6 +1,6 @@
 package mutable
 
-import "github.com/samber/lo/internal/rand"
+import "github.com/big-cabbage/lo/internal/rand"
 
 // Filter is a generic function that modifies the input slice in-place to contain only the elements
 // that satisfy the provided predicate function. The predicate function takes an element of the slice and its index,

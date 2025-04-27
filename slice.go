@@ -3,8 +3,8 @@ package lo
 import (
 	"sort"
 
-	"github.com/samber/lo/internal/constraints"
-	"github.com/samber/lo/mutable"
+	"github.com/big-cabbage/lo/internal/constraints"
+	"github.com/big-cabbage/lo/mutable"
 )
 
 // Filter iterates over elements of collection, returning an array of all elements predicate returns truthy for.
@@ -742,4 +742,24 @@ func Splice[T any, Slice ~[]T](collection Slice, i int, elements ...T) Slice {
 	}
 
 	return append(append(append(output, collection[:i]...), elements...), collection[i:]...)
+}
+
+// Any returns true if at least one element of the slice satisfies the predicate.
+func Any[T any](collection []T, predicate func(item T) bool) bool {
+	for i := range collection {
+		if predicate(collection[i]) {
+			return true
+		}
+	}
+	return false
+}
+
+// All returns true if all elements of the slice satisfy the predicate.
+func All[T any](collection []T, predicate func(item T) bool) bool {
+	for i := range collection {
+		if !predicate(collection[i]) {
+			return false
+		}
+	}
+	return true
 }

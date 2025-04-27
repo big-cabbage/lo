@@ -1,7 +1,7 @@
 package lo
 
 import (
-	"github.com/samber/lo/internal/constraints"
+	"github.com/big-cabbage/lo/internal/constraints"
 )
 
 // Range creates an array of numbers (positive and/or negative) with given length.
