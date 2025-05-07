@@ -7,9 +7,11 @@ go 1.18
 //
 
 require (
+	github.com/hashicorp/golang-lru/v2 v2.0.7
 	github.com/stretchr/testify v1.10.0
 	github.com/thoas/go-funk v0.9.3
 	go.uber.org/goleak v1.2.1
+	golang.org/x/sync v0.11.0
 	golang.org/x/text v0.22.0
 )
 
